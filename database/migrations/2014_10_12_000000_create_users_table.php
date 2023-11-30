@@ -17,6 +17,11 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->boolean("consent_id2_status")->default(false);
+            $table->string('consent_id2')->unique();
+            $table->boolean("consent_id3_status")->default(false);
+            $table->string('consent_id3')->unique();
+            $table->bigInteger('phone')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

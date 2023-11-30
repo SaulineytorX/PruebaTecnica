@@ -5,6 +5,9 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
+use App\Models\User;
+use App\Models\Card;
+
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -18,5 +21,9 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+        Card::factory(1)->create();
+        $this->call([
+            UserSeeder::class,
+        ]);
     }
 }

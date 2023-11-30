@@ -12,6 +12,7 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    protected $table = "users"; // Nombre de la tabla en la base de datos.
     /**
      * The attributes that are mass assignable.
      *
@@ -21,6 +22,9 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'phone',
+        'consent_id2',
+        'consent_id3',
     ];
 
     /**
@@ -42,4 +46,20 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    /**
+     * Obtener la card del usuario en este caso seria el consent_id1.
+     */
+    public function cards()
+    {
+        return $this->hasMany(Card::class);
+    }
+
+    /**
+     * Obtener las acciones del usuario.
+     */
+    public function userActions()
+    {
+        return $this->hasMany(UserAction::class);
+    }
 }
